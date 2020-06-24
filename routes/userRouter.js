@@ -58,6 +58,6 @@ User.findOne({username})
         })
     })
 }).catch(next);
-})
+}) 
 
 module.exports =router;
