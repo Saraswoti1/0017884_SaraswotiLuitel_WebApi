@@ -5,11 +5,12 @@ require('dotenv').config();
 
 const auth = require('./auth');
 const userRouter = require('./routes/userRouter');
+const exampleRouter = require('./routes/exampleRouter');
 
 
 const app =express();
 //connection for database
-mongoose.connect('mongodb://127.0.0.1:27017/PatientMS',{
+mongoose.connect('mongodb://127.0.0.1:27017/record',{
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useFindAndModify:true,
@@ -27,9 +28,10 @@ res.send('welcome to the PRMS ');
 });
 
 app.use('/prms/users',userRouter);
+app.use('/prms/users/example',exampleRouter);
 //app.use('/prms/task',auth.VerifyUsers,taskRouter);
 
-//poet calling for server name from .env file
+//port calling for server name from .env file
 app.listen(process.env.Port,()=>{
     console.log(`Server is running at localhost:${process.env.Port}`);
      });
